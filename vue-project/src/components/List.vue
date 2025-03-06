@@ -3,7 +3,7 @@ import ListItem from './ListItem.vue'
 import NewItemPopup from './NewItemPopup.vue'
 import { ref } from 'vue'
 
-const items = ref([{ content: 'Foo' }, { content: 'Bar' }])
+const items = ref([{ content: 'Foo', checked: false }, { content: 'Bar', checked: true}])
 const isPopupOpened = ref(false);
 const popupArea=ref(null)
 
@@ -16,7 +16,7 @@ const closePopup = () => {
 }
 
 const addListItem = (content) => {
-  items.value.unshift({content: content})
+  items.value.unshift({content: content, checked: false})
 }
 
 const removeListItem = (index) => {
@@ -44,7 +44,7 @@ const removeListItem = (index) => {
       </template>
     </NewItemPopup>
     <div class="wrapper" id="list">
-      <ListItem v-for="item in items">
+      <ListItem v-for="item in items" v-model:checked="item.checked">
         <template #content>{{ item.content }}</template>
         <template #delete>
           <button @click="removeListItem(items.indexOf(item))">

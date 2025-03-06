@@ -1,6 +1,11 @@
+<script setup lang="ts">
+  import Checkbox from './checkbox.vue';
+  const checked = defineModel('checked')
+</script>
+
 <template>
   <div class="item">
-    <input type="checkbox" class="checkbox"/>
+    <Checkbox v-model:checked="checked"/>
     <p class="content">
       <slot name="content"></slot>
     </p>
@@ -10,17 +15,11 @@
 
 <style scoped>
 .item {
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
   display: flex;
   position: relative;
-  width: 100%;
   border: 2px solid var(--color-border);
   border-radius: 8px;
-}
-
-.checkbox {
-  width: 50px;
-  height: 50px;
 }
 
 .content {
