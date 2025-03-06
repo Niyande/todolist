@@ -1,0 +1,45 @@
+<template>
+  <button class="plusButton">
+    <svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 24 24" width="512" height="512">
+      <path d="M17,12c0,.553-.448,1-1,1h-3v3c0,.553-.448,1-1,1s-1-.447-1-1v-3h-3c-.552,0-1-.447-1-1s.448-1,1-1h3v-3c0-.553,.448-1,1-1s1,.447,1,1v3h3c.552,0,1,.447,1,1Zm7-7v14c0,2.757-2.243,5-5,5H5c-2.757,0-5-2.243-5-5V5C0,2.243,2.243,0,5,0h14c2.757,0,5,2.243,5,5Zm-2,0c0-1.654-1.346-3-3-3H5c-1.654,0-3,1.346-3,3v14c0,1.654,1.346,3,3,3h14c1.654,0,3-1.346,3-3V5Z"/>
+    </svg>
+  </button>
+</template>
+
+<style scoped>
+  .plusButton {
+    height: 3rem;
+    width: 3rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+    background-color: transparent;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+    position: relative;
+    overflow: hidden;
+  }
+  .plusButton svg {
+    width: 75%;
+    stroke:#b5bac2;
+    fill: #b5bac2;
+  }
+  .plusButton:hover {
+    background-image: linear-gradient(45deg, rgb(100, 61, 219) 0%, rgb(217, 21, 239) 100%);
+    overflow: visible;
+  }
+  svg path {
+    transition: all 0.2s;
+  }
+  .plusButton:hover svg path {
+    stroke: #fff;
+    fill: #fff;
+  }
+  .plusButton:active {
+    transform: scale(0.98);
+  }
+</style>

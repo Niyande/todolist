@@ -2,6 +2,8 @@
 import ListItem from './ListItem.vue'
 import NewItemPopup from './NewItemPopup.vue'
 import { ref } from 'vue'
+import Trashcan from './Trashcan.vue';
+import PlusButton from './PlusButton.vue';
 
 const items = ref([{ content: 'Foo', checked: false }, { content: 'Bar', checked: true}])
 const isPopupOpened = ref(false);
@@ -30,7 +32,7 @@ const removeListItem = (index) => {
     <div class="wrapper">
       <h1 class="green">Lista zadań</h1>
       <button @click="openPopup">
-        <img alt="plus button" src="../assets/square-plus.svg" width="50" height="50" />
+        <PlusButton/>
       </button>
     </div>
     <NewItemPopup :isOpen="isPopupOpened" @modal-close="closePopup" @submit="addListItem(popupArea)" name="first-modal">
@@ -47,8 +49,8 @@ const removeListItem = (index) => {
       <ListItem v-for="item in items" v-model:checked="item.checked">
         <template #content>{{ item.content }}</template>
         <template #delete>
-          <button @click="removeListItem(items.indexOf(item))">
-            <img alt="delete" src="../assets/trash.svg" width="50" height="50" />
+          <button @click="removeListItem(items.indexOf(item))" style="height: 100%; margin: 0.5em;">
+            <Trashcan/>
           </button>
         </template>
       </ListItem>

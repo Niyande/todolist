@@ -1,5 +1,5 @@
 <script setup lang="ts">
-  import Checkbox from './checkbox.vue';
+  import Checkbox from './Checkbox.vue';
   const checked = defineModel('checked')
 </script>
 

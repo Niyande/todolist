@@ -30,8 +30,7 @@
   user-select: none;
   border-radius: 5px;
   box-shadow: 2px 2px 0px rgb(183, 183, 183);
-  margin-top: 0.5em;
-  margin-left: 0.5em;
+  margin: 0.5em;
 }
 
 /* Create a custom checkbox */
