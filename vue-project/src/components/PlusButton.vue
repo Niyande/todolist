@@ -32,12 +32,12 @@
     background-image: linear-gradient(45deg, rgb(100, 61, 219) 0%, rgb(217, 21, 239) 100%);
     overflow: visible;
   }
-  svg path {
+  /* svg path {
     transition: all 0.2s;
-  }
+  } */
   .plusButton:hover svg path {
-    stroke: #fff;
-    fill: #fff;
+    stroke: var(--color-background);
+    fill: var(--color-background);
   }
   .plusButton:active {
     transform: scale(0.98);

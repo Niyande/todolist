@@ -15,15 +15,15 @@
 
 <style scoped>
 .item {
-  margin-bottom: 1rem;
   display: flex;
   position: relative;
-  border: 2px solid var(--color-border);
+  border-bottom: 2px solid rgb(217, 21, 239);
   border-radius: 8px;
+  width: 100%;
 }
 
 .content {
-  width: 150px;
+  width: 100%;
   margin-left: 50px;
 }
 </style>

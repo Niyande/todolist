@@ -49,11 +49,11 @@
     background-image: linear-gradient(45deg, rgb(100, 61, 219) 0%, rgb(217, 21, 239) 100%);
     overflow: visible;
   }
-  .bin path {
+  /* .bin path {
     transition: all 0.2s;
-  }
+  } */
   .deleteButton:hover .bin path {
-    fill: #fff;
+    fill: var(--color-background);
   }
   .deleteButton:active {
     transform: scale(0.98);
