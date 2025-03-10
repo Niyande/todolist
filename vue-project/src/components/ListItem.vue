@@ -24,6 +24,6 @@
 
 .content {
   width: 100%;
-  margin-left: 50px;
+  text-wrap: wrap;
 }
 </style>
