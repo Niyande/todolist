@@ -18,6 +18,7 @@ const closePopup = () => {
 }
 
 const addListItem = (content) => {
+  console.log(content)
   items.value.unshift({content: content, checked: false})
 }
 
@@ -35,15 +36,7 @@ const removeListItem = (index) => {
         <PlusButton/>
       </button>
     </div>
-    <NewItemPopup :isOpen="isPopupOpened" @modal-close="closePopup" @submit="addListItem(popupArea)" name="first-modal">
-      <template #input>
-        <textarea ref="popupArea" placeholder="Wpisz treść zadania..."></textarea>
-      </template>
-      <template #footer>
-        <div>
-          <button @click="addListItem(popupArea.value),closePopup()">Submit</button>
-        </div>
-      </template>
+    <NewItemPopup :isOpen="isPopupOpened" @modal-close="closePopup" @addListItem="addListItem" name="first-modal">
     </NewItemPopup>
     <div class="wrapper" id="list">
       <ListItem v-for="item in items" v-model:checked="item.checked">
