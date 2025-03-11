@@ -33,14 +33,13 @@ const removeListItem = (index) => {
     <div class="wrapper">
       <h1>Lista zadań</h1>
     </div>
-    <NewItemPopup :isOpen="isPopupOpened" @modal-close="closePopup" @addListItem="addListItem" name="first-modal">
-    </NewItemPopup>
+    <NewItemPopup :isOpen="isPopupOpened" @modal-close="closePopup" @addListItem="addListItem" name="first-modal"/>
     <div class="wrapper">
       <div id="list">
         <ListItem v-for="item in items" v-model:checked="item.checked">
           <template #content>{{ item.content }}</template>
           <template #delete>
-            <button @click="removeListItem(items.indexOf(item))">
+            <button class="delete-button" @click="removeListItem(items.indexOf(item))">
               <Trashcan/>
             </button>
           </template>
@@ -68,10 +67,11 @@ main {
   padding: 0;
   border: none;
   background-color: transparent;
+  margin-left: 0.5em;
 }
 
 #list {
-  width: calc(100% - 3rem);
+  width: calc(100% - 3rem - 0.5em);
   height: calc(100vh - 6rem);
   border: 2px solid rgb(100, 61, 219);
   border-radius: 8px;
@@ -90,6 +90,12 @@ h1 {
 
 h3 {
   font-size: 1.2rem;
+}
+
+.delete-button {
+  height: 2em;
+  width: 2em;
+  margin: 0.5em;
 }
 
 .wrapper

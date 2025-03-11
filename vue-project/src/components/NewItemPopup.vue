@@ -53,7 +53,7 @@ const input = useTemplateRef('popupArea');
     min-height: 50px;
     max-width: 150px;
     padding: 0 1rem;
-    color: #fff;
+    color: var(--color-text);
     background-color: var(--color-background);
     font-size: 15px;
     border: 1px solid rgb(100, 61, 219);
