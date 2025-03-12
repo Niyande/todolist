@@ -66,8 +66,8 @@ const removeListItem = () => {
 
 <style scoped>
 main {
-  margin: 0 auto;
   padding: 0 2rem;
+  margin: 0 2rem 0 calc(5rem + 0.5em);
   width: 100rem;
   max-width: 400px;
   height: 100vh;

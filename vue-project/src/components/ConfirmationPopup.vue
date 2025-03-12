@@ -20,8 +20,10 @@ const input = useTemplateRef('popupArea');
       <div class="modal-container" ref="target">
         <div class="input-group">
           <p> Czy na pewno chcesz usunąć to zadanie?</p>
-          <input class="button--submit" value="Usuń" type="submit" @click="emit('deleteListItem'); emit('modal-close')">
-          <input class="button--submit" value="Anuluj" type="submit" @click="emit('modal-close')">
+          <div class="button-wrapper">
+            <input class="button--submit" value="Usuń" type="submit" @click="emit('deleteListItem'); emit('modal-close')">
+            <input class="button--submit" value="Anuluj" type="submit" @click="emit('modal-close')">
+          </div>
         </div>
       </div>
     </div>
@@ -29,6 +31,11 @@ const input = useTemplateRef('popupArea');
 </template>
 
 <style scoped>
+  @property --rotation {
+    syntax: "<angle>";
+    inherits: false;
+    initial-value: 0deg;
+  }
 
   .modal-mask {
     position: fixed;
@@ -43,10 +50,16 @@ const input = useTemplateRef('popupArea');
     width: 300px;
     margin: 150px auto;
     padding: 20px 30px;
+    color: var(--color-text);
+    background-color: var(--color-background);
+    font-size: 15px;
+    border: 1px solid rgb(100, 61, 219);
+    border-radius: 6px;
   }
 
   .input-group {
     display: flex;
+    flex-direction: column;
     align-items: center;
   }
 
@@ -62,23 +75,39 @@ const input = useTemplateRef('popupArea');
   }
 
   .button--submit {
+    margin: auto;
     min-height: 50px;
     padding: .5em 1em;
     border: none;
-    border-radius: 0 6px 6px 0;
-    background-image: linear-gradient(45deg, rgb(100, 61, 219) 0%, rgb(217, 21, 239) 100%);
+    border-radius: 6px;
+    background-image: linear-gradient(var(--rotation), rgb(100, 61, 219) 0%, rgb(217, 21, 239) 100%);
     color: #fff;
     font-size: 15px;
     cursor: pointer;
-    transition: background-color .3s ease-in-out;
+    --rotation: 45deg;
+    transition: --rotation 1s;
   }
 
   .button--submit:hover {
-    background-image: linear-gradient(45deg, rgb(100, 61, 219) 0%, rgb(217, 21, 239) 100%);
+    --rotation: 225deg;
   }
 
   .input:focus, .input:focus-visible {
     outline: none;
+  }
+
+  .button-wrapper
+  {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+  }
+
+  p {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 1em;
   }
 </style>
 
