@@ -4,17 +4,28 @@ import NewItemPopup from './NewItemPopup.vue'
 import { ref } from 'vue'
 import Trashcan from './Trashcan.vue';
 import PlusButton from './PlusButton.vue';
+import ConfirmationPopup from './ConfirmationPopup.vue';
 
 const items = ref([{ content: 'Foo', checked: false }, { content: 'Bar', checked: true}])
-const isPopupOpened = ref(false);
-const popupArea=ref(null)
+const isAddPopupOpened = ref(false);
+const isDeletePopupOpened = ref(false);
+const deleteIndex = ref(null);
 
-const openPopup = () => {
-  isPopupOpened.value = true;
+const openAddPopup = () => {
+  isAddPopupOpened.value = true;
 }
 
-const closePopup = () => {
-  isPopupOpened.value = false;
+const closeAddPopup = () => {
+  isAddPopupOpened.value = false;
+}
+
+const openDeletePopup = (index) => {
+  isDeletePopupOpened.value = true;
+  deleteIndex.value = index;
+}
+
+const closeDeletePopup = () => {
+  isDeletePopupOpened.value = false;
 }
 
 const addListItem = (content) => {
@@ -22,8 +33,8 @@ const addListItem = (content) => {
   items.value.unshift({content: content, checked: false})
 }
 
-const removeListItem = (index) => {
-  items.value.splice(index, 1)
+const removeListItem = () => {
+  items.value.splice(deleteIndex.value, 1)
 }
 
 </script>
@@ -33,19 +44,20 @@ const removeListItem = (index) => {
     <div class="wrapper">
       <h1>Lista zadań</h1>
     </div>
-    <NewItemPopup :isOpen="isPopupOpened" @modal-close="closePopup" @addListItem="addListItem" name="first-modal"/>
+    <NewItemPopup :isOpen="isAddPopupOpened" @modal-close="closeAddPopup" @addListItem="addListItem" name="first-modal"/>
+    <ConfirmationPopup :isOpen="isDeletePopupOpened" @modal-close="closeDeletePopup" @deleteListItem="removeListItem" name="second-modal"/>
     <div class="wrapper">
       <div id="list">
         <ListItem v-for="item in items" v-model:checked="item.checked">
           <template #content>{{ item.content }}</template>
           <template #delete>
-            <button class="delete-button" @click="removeListItem(items.indexOf(item))">
+            <button class="delete-button" @click="openDeletePopup(items.indexOf(item))">
               <Trashcan/>
             </button>
           </template>
         </ListItem>
       </div>
-      <button id="add-button" @click="openPopup">
+      <button id="add-button" @click="openAddPopup">
         <PlusButton/>
       </button>
     </div>
